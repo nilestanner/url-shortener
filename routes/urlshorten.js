@@ -3,7 +3,8 @@ const validUrl = require("valid-url");
 const UrlShorten = mongoose.model("UrlShorten");
 const shortid = require("shortid");
 
-const errorUrl='https://link.nilestanner.com/error';
+const errorUrl=`${process.env.BASE_URL}/error`;
+const defaultBaseUrl = process.env.BASE_URL;
 
 module.exports = app => {
 
@@ -11,7 +12,10 @@ module.exports = app => {
   app.get("/:code", handleItemGet);
 
   app.post("/api/item", async (req, res) => {
-    const { originalUrl, shortBaseUrl } = req.body;
+    let { originalUrl, shortBaseUrl } = req.body;
+    if (shortBaseUrl == null) {
+        shortBaseUrl = defaultBaseUrl;
+    }
     if (validUrl.isUri(shortBaseUrl)) {
     } else {
       return res
