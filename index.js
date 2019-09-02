@@ -37,5 +37,6 @@ app.use(function(req, res, next) {
     }
 });
 app.use(bodyParser.json());
+app.use(express.static('client/build'));
 
 require("./routes/urlshorten")(app);
