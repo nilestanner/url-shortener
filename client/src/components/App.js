@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css"></link>
         <BrowserRouter>
           <div>
             <Header />

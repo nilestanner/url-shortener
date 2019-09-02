@@ -16,7 +16,7 @@ class Landing extends Component {
       showApiError: false,
       showLoading: false,
       exUrl:
-        "https://www.amazon.com/Apple-iPhone-GSM-Unlocked-5-8/dp/B075QMZH2L",
+        "https://www.nilestanner.com",
       exShortUrl: constants.baseUrl
     };
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -32,7 +32,7 @@ class Landing extends Component {
     if (this.state.clickSubmit && this.state.originalUrl) {
       this.setState({ showLoading: true, showShortenUrl: false });
       let reqObj = {
-        originalUrl: this.state.originalUrl,
+        originalUrl: this.state.originalUrl.trim(),
         shortBaseUrl: constants.baseUrl
       };
       createShortUrl(reqObj)
@@ -64,7 +64,7 @@ class Landing extends Component {
           name="action"
           onClick={this.handleSubmit}
         >
-          Submit
+          Make me a short Url!
         </button>
       );
     } else {
@@ -90,48 +90,35 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
-        <div>
-          <h5> Original Url</h5>
-        </div>
-        <div>
-          Ex:{" "}
-          <a target="_blank" href={this.state.exUrl}>
-            {this.state.exUrl}
-          </a>
-        </div>
         <input
           name="originalUrl"
           placeholder="Paste your link.."
           value={this.state.originalUrl}
           onChange={this.handleUserInput.bind(this)}
         />
-
-        {this.state.showError && (
-          <div className="formError">Original Url is required</div>
-        )}
-
         <div>
-          <h5>*Base Url</h5>
+          Ex:{" "}
+          <a target="_blank" href={this.state.exUrl}>
+            {this.state.exUrl}
+          </a>
         </div>
-
-        <input
-          name="baseUrl"
-          placeholder={this.state.exShortUrl}
-          value={this.state.baseUrl}
-          onChange={this.handleUserInput.bind(this)}
-          disabled
-        />
+        <br/>
+        {this.state.showError && (
+          <div className="formError">Url is required</div>
+        )}
         {this.renderButton()}
         {this.state.showApiError && (
           <div className="shorten-error">{this.state.apiError}</div>
         )}
         {this.state.showShortenUrl && (
-          <div className="shorten-title">
-            Shortened Url is ->{` `}
+          <h4 className="shorten-title">
+            Here's your Url! 
+            <br/>
+            {` `}
             <a target="_blank" href={this.state.shortenUrl}>
               {this.state.shortenUrl}
             </a>
-          </div>
+          </h4>
         )}
       </div>
     );
