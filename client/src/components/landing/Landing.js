@@ -133,13 +133,6 @@ class Landing extends Component {
             </a>
           </div>
         )}
-        <div className="shorten-imp">
-          [* Here base url has the default value{" "}
-          <a target="_blank" href={this.state.exShortUrl}>
-            {this.state.exShortUrl}
-          </a>{" "}
-          .This will change based on domain name]
-        </div>
       </div>
     );
   }

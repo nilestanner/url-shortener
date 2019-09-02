@@ -3,6 +3,6 @@ module.exports = {
   // baseUrl: "http://localhost:7000"
   //  /apiUrl: "http://shortener.muhzi.com/v1/api/",
   // baseUrl: "http://muhzi.com"
-  apiUrl: "http://link.nilestanner.com/api/",
+  apiUrl: "https://nt-url-shortner.herokuapp.com/api/",
   baseUrl: "http://link.nilestanner.com"
 };
