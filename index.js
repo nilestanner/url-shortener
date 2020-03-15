@@ -13,7 +13,8 @@ mongoose.Promise = global.Promise;
 
 const connectOptions = {
   keepAlive: true,
-  reconnectTries: Number.MAX_VALUE
+  reconnectTries: Number.MAX_VALUE,
+  useNewUrlParser: true,
 };
 
 mongoose.connect(mongoURI, connectOptions, (err, db) => {
@@ -27,7 +28,7 @@ app.listen(PORT, () => {
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+    res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
     res.header(
       "Access-Control-Allow-Headers",
       "Content-type,Accept,x-access-token,X-Key"
